@@ -1,0 +1,39 @@
+MODULE InsSort;
+FROM InOut IMPORT WriteString,
+WriteLn,WriteCard
+
+CONST N = 16
+VAR i: CARDINAL
+
+BEGIN
+PROCEDURE ISort(VAR a: ARRAY [0..N] OF CARDINAL; n: CARDINAL);
+VAR i, j, x: CARDINAL;
+BEGIN
+FOR i := 2 TO n DO
+x := a[i];
+a[0] := x;
+j := i - 1;
+WHILE x < a[j] DO
+a[j+1] := a[j];
+j := j -1;
+END;
+a[j+1] := x;
+END;
+END
+
+FOR i := 1 TO N DO
+a[i] := N - i;
+END
+FOR i := 1 TO N DO
+WriteCard(a[i])
+END
+
+ISort(a, N);
+
+FOR i := 1 TO N DO
+WriteCard(a[i])
+END
+
+END
+END
+END InsSort.
